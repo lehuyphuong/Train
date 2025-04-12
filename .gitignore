@@ -1,0 +1,15 @@
+__pycache__/
+
+
+# data
+GRF/Data/
+GRF/ProcessedData/
+# GRF/checkpoint/
+
+# visualization
+Visualization/aitviewer/
+Visualization/models/
+
+# *.ipynb
+
+animations/tmp_imgs
