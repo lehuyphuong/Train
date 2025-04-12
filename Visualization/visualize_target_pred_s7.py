@@ -22,7 +22,7 @@ import util
 
 # Load File Paths
 Basepath = "/mimer/NOBACKUP/groups/alvis_cvl/cuole/datasets/GroundLink/moshpp/"
-PredPath = "/mimer/NOBACKUP/groups/alvis_cvl/cuole/phys_grd/ProcessedData/"
+PredPath = "/content/ProcessedData/ProcessedData"
 participant = 's007'
 trial = 's007_20220705_tennisgroundstroke_1'
 # trial = 's007_20220705_walk_0001'
@@ -39,22 +39,25 @@ ckp = 'phys_grd_S5_1e-06'
 Testing = False
 sourcemotion = os.path.join(Basepath+participant, trial + '_stageii.npz')
 if Testing:
-    gt_file = os.path.join(PredPath+util.participants[participant]+'/test', trial+'.pth')
+    gt_file = os.path.join(
+        PredPath+util.participants[participant]+'/test', trial+'.pth')
 else:
-    gt_file = os.path.join(PredPath+util.participants[participant]+'/preprocessed', trial+'.pth')
-predicted = os.path.join(PredPath+util.participants[participant]+'/prediction/' + ckp, trial+'.pth')
+    gt_file = os.path.join(
+        PredPath+util.participants[participant]+'/preprocessed', trial+'.pth')
+predicted = os.path.join(
+    PredPath+util.participants[participant]+'/prediction/' + ckp, trial+'.pth')
 
 
 if __name__ == "__main__":
-    # Load an AMASS sequence and make sure it's sampled at 60 fps. 
+    # Load an AMASS sequence and make sure it's sampled at 60 fps.
     # This loads the SMPL-X model.
     # We set transparency to 0.5 and render the joint coordinates systems.
     c = (149 / 255, 85 / 255, 149 / 255, 0.5)
     color_gt = (83 / 255, 189 / 255, 255 / 255, 1.0)
     color_pred = (255 / 255, 130 / 255, 53/255, 1.0)
 
-    mesh = (102/255,102/255,102/255,0.5)
-    fp_color = (127/255,127/255,128/255,1)
+    mesh = (102/255, 102/255, 102/255, 0.5)
+    fp_color = (127/255, 127/255, 128/255, 1)
     seq_amass = SMPLSequence.from_amass(
         npz_data_path=sourcemotion,
         fps_out=fps,
@@ -63,27 +66,28 @@ if __name__ == "__main__":
         show_joint_angles=True,
     )
 
-    ptc_amass = PointClouds(seq_amass.vertices, position=np.array([-1.0, 0.0, 0.0]), color=c, z_up=True)
+    ptc_amass = PointClouds(seq_amass.vertices, position=np.array(
+        [-1.0, 0.0, 0.0]), color=c, z_up=True)
 
     line_strip = util.get_fp()
-    line_renderable = Lines(line_strip, color = fp_color, mode="lines")
+    line_renderable = Lines(line_strip, color=fp_color, mode="lines")
 
-    CoP, CoP_pred, GRF, GRF_pred = util.get_data_pred(gt_file, predicted, threshold)
+    CoP, CoP_pred, GRF, GRF_pred = util.get_data_pred(
+        gt_file, predicted, threshold)
 
     arrow_renderables = Arrows(
-                CoP.numpy(),
-                CoP.numpy()+GRF.numpy(),
-                color= color_gt,
-                is_selectable=True,
-            )
-    
+        CoP.numpy(),
+        CoP.numpy()+GRF.numpy(),
+        color=color_gt,
+        is_selectable=True,
+    )
+
     arrow_renderables_pred = Arrows(
-                CoP_pred.numpy(),
-                CoP_pred.numpy()+GRF_pred.numpy(),
-                color= color_pred,
-                is_selectable=True,
-            )
-    
+        CoP_pred.numpy(),
+        CoP_pred.numpy()+GRF_pred.numpy(),
+        color=color_pred,
+        is_selectable=True,
+    )
 
     # Display in the viewer.
     v = Viewer()

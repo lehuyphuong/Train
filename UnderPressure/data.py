@@ -16,7 +16,7 @@ import torch
 
 # Modified Data location for GroundLink
 # ROOT = Path(__file__).parent / "../GRF/ProcessedData"
-ROOT = Path(__file__).parent / "/mimer/NOBACKUP/groups/alvis_cvl/cuole/phys_grd/ProcessedData"
+ROOT = Path(__file__).parent / "/content/ProcessedData/ProcessedData"
 
 # Modified joint list for GroundLink
 TOPOLOGY = anim.Topology([
