@@ -398,7 +398,7 @@ if __name__ == "__main__":
     parser.add_argument("-ckp", default=checkpoint, type=Path,		help="Path to make checkpoint during training ..... default: 'checkpoint.tar'")
 
     util.seed_everything(42)
-    folder_path = "/mimer/NOBACKUP/groups/alvis_cvl/cuole/phys_grd/dataset_" + args.test_subject
+    folder_path = "/content/ProcessedData/ProcessedData" + args.test_subject
     # Trainer(**vars(parser.parse_args()))
     Trainer(**vars(parser.parse_args())).run()
 
