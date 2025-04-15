@@ -43,7 +43,7 @@ system = 'Ubuntu'
 save_img = False
 save_high_res_img = True
 
-ROOT = "/content/ProcessedData/ProcessedData"
+ROOT = "/content/ProcessedData/ProcessedData/S5/prediction"
 subj = "S5"
 mass = sub_mass[subj]
 folder = "Male2MartialArtsKicks_c3d"
