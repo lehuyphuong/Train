@@ -43,7 +43,7 @@ system = 'Ubuntu'
 save_img = False
 save_high_res_img = True
 
-ROOT = "/mimer/NOBACKUP/groups/alvis_cvl/cuole/phys_grd/ProcessedData/"
+ROOT = "/content/ProcessedData/ProcessedData"
 subj = "S5"
 mass = sub_mass[subj]
 folder = "Male2MartialArtsKicks_c3d"
