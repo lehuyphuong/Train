@@ -18,7 +18,7 @@ import torch
 
 # Modified Data location for GroundLink
 # ROOT = Path(__file__).parent / "../GRF/ProcessedData"
-ROOT = Path(__file__).parent / "/content/ProcessedData/ProcessedData"
+ROOT = Path(__file__).parent / "./ProcessedData/ProcessedData"
 
 # Modified joint list for GroundLink
 TOPOLOGY = anim.Topology([
