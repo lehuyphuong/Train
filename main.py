@@ -1,6 +1,6 @@
 
 import os, shutil, sys
-# sys.path.append('./UnderPressure')
+sys.path.append('./UnderPressure')
 # UnderPressure NN related
 import anim, metrics, models, util
 from data import TOPOLOGY, Contacts, Dataset
